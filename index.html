@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <!-- Definição do conjunto de caracteres e da viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título da página -->
+    <title>Portfólio de Projetos de Software</title>
+    <!-- Inclusão do arquivo de estilos CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Pré-conexão com o Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <!-- Inclusão das fontes Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&#x26;family=Montserrat:ital,wght@0,100..900;1,100..900&#x26;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&#x26;display=swap" rel="stylesheet">
+    <!-- Inclusão do script Modernizr para detecção de recursos do navegador -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  </head>
+  <body data-barba="wrapper">
+    <!-- Divs para as estrelas de fundo -->
+    <div id='stars'></div>
+    <div id='stars2'></div>
+    <div id='stars3'></div>
+    <!-- Div para o conteúdo principal -->
+    <main data-barba="container" data-barba-namespace="index">
+      <div class="content-wrapper">
+        <div class="container">
+          <!-- Cabeçalho -->
+          <header>
+            <!-- Título principal -->
+            <h1>Marcus Witte</h1>
+            <!-- Subtítulo -->
+            <h2>PORTFÓLIO DE PROJETOS DE SOFTWARE</h2>
+            <!-- Descrição -->
+            <p>Graduando em Engenharia de Software na Universidade Severino Sombra de Vassouras</p>
+            <!-- Botões -->
+            <div class="buttons">
+              <a href="projetos.html" class="btn">Projetos</a>
+              <a href="sobre.html" class="btn">Sobre</a>
+            </div>
+          </header>
+        </div>
+      </div>
+    </main>
+    <script type="text/javascript">
+			(function() {
+				'use strict';
+
+				if ('scrollRestoration' in history) {
+					history.scrollRestoration = 'manual';
+				}
+
+				const onWindowLoad = function() {
+					barba.init({
+						debug: true,
+						transitions: [{
+							name: 'opacity-transition',
+							leave(data) {
+								data.current.container.style.position = 'absolute';
+								data.current.container.style.width = '100%';
+								return gsap.to(data.current.container, {
+									opacity: 0
+								});
+							},
+							enter(data) {
+								return gsap.from(data.next.container, {
+									opacity: 0
+								});
+							}
+						}]
+					});
+				}
+				window.addEventListener('load', onWindowLoad);
+			})();
+    </script>
+  </body>
+</html>
